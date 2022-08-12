@@ -304,6 +304,10 @@ func (e *OpenVPNExporter) collectClientStatusFromReader(statusPath string, file 
 			location, _ := time.LoadLocation("Local")
 			timeParser, err := time.ParseInLocation("Mon Jan 2 15:04:05 2006", fields[1], location)
 			if err != nil {
+				// Try ISO8601 format (OpenVPN 2.5+)
+				timeParser, err = time.ParseInLocation("2006-01-02 15:04:05", fields[1], location)
+			}
+			if err != nil {
 				return err
 			}
 			ch <- prometheus.MustNewConstMetric(
