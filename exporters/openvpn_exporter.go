@@ -356,7 +356,7 @@ func (e *OpenVPNExporter) Collect(ch chan<- prometheus.Metric) {
 				1.0,
 				statusPath)
 		} else {
-			log.Printf("Failed to scrape showq socket: %s", err)
+			log.Printf("Failed to scrape log file: %s", err)
 			ch <- prometheus.MustNewConstMetric(
 				e.openvpnUpDesc,
 				prometheus.GaugeValue,
