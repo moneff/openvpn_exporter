@@ -105,7 +105,9 @@ docker run -p 9176:9176 \
 
 Metrics should be available at http://localhost:9176/metrics.
 
-## Get a standalone executable binary
+## Cross Compile
 
-You can download the pre-compiled binaries from the
-[releases page](https://github.com/pauldeng/openvpn_exporter/releases).
+```bash
+env GOOS=linux GOARCH=arm64 go build -ldflags="-s -w" -o openvpn_exporter_arm6
+env GOOS=linux GOARCH=amd64 go build -ldflags="-s -w" -o openvpn_exporter_amd64
+```
