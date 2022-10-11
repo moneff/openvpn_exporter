@@ -73,7 +73,7 @@ Usage of openvpn_exporter:
 E.g:
 
 ```sh
-openvpn_exporter -openvpn.status_paths /etc/openvpn/openvpn-status.log
+openvpn_exporter -openvpn.status_paths /var/log/openvpn/openvpn-status.log
 ```
 
 Install to Systemd service
