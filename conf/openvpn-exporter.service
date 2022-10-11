@@ -6,7 +6,7 @@ Wants=network-online.target openvpn.service
 [Service]
 Restart=always
 Type=simple
-ExecStart=/home/ubuntu/openvpn-exporter/openvpn-exporter-linux -openvpn.status_paths /var/log/openvpn/openvpn-status.log
+ExecStart=/home/ubuntu/Workspace/openvpn-exporter/openvpn_exporter_arm64 -openvpn.status_paths /var/log/openvpn/openvpn-status.log
 
 [Install]
 WantedBy=multi-user.target
