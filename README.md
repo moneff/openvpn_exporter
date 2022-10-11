@@ -108,6 +108,6 @@ Metrics should be available at http://localhost:9176/metrics.
 ## Cross Compile
 
 ```bash
-env GOOS=linux GOARCH=arm64 go build -ldflags="-s -w" -o openvpn_exporter_arm6
+env GOOS=linux GOARCH=arm64 go build -ldflags="-s -w" -o openvpn_exporter_arm64
 env GOOS=linux GOARCH=amd64 go build -ldflags="-s -w" -o openvpn_exporter_amd64
 ```
