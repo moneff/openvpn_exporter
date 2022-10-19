@@ -111,3 +111,13 @@ Metrics should be available at http://localhost:9176/metrics.
 env GOOS=linux GOARCH=arm64 go build -ldflags="-s -w" -o openvpn_exporter_arm64
 env GOOS=linux GOARCH=amd64 go build -ldflags="-s -w" -o openvpn_exporter_amd64
 ```
+
+## Compile from Docker image
+
+Build the image and then get the binary
+```
+docker build --force-rm=true -t openvpn_exporter -f local_build.Dockerfile .
+docker run -it -f local_build.Dockerfile -v /tmp/openvpn_exporter:/volume openvpn_exporter cp openvpn_exporter /volume
+```
+
+The binary is available in `/tmp/openvpn_exporter/openvpn_exporter`
