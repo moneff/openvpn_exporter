@@ -26,6 +26,7 @@ RUN set -ex && \
         -ldflags '-extldflags "-static"' && \
   ls
 
+RUN echo $(pwd) && ls
 # Create the second stage with a basic image.
 # this will drop any previous
 # stages (defined as `FROM <some_image> as <some_name>`)
@@ -35,7 +36,7 @@ RUN set -ex && \
 FROM busybox
 
 # add compiled binary
-COPY --from=builder /app/openvpn_exporter /openvpn_exporter
+COPY --from=builder /app/build /openvpn_exporter
 
 # add a default file to be processed
 ADD examples/server2.status /etc/openvpn_exporter/server.status

@@ -95,11 +95,11 @@ sudo systemctl daemon-reload
 
 ```
 
-## Docker
+## Docker run
 
 To use with docker you must mount your status file to `/etc/openvpn_exporter/server.status`.
 
-```sh (deprecated)
+```sh
 docker run -p 9176:9176 \
   -v $(pwd)/examples/server.openvpn2-5.status:/etc/openvpn_exporter/server.status \
   kumina/openvpn-exporter -openvpn.status_paths /etc/openvpn_exporter/server.status
