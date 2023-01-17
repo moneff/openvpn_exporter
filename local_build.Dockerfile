@@ -21,7 +21,7 @@ RUN go get -d ./...
 RUN set -ex && \
   CGO_ENABLED=0 go build \
         -tags netgo \
-        -o /app/openvpn_exporter \
+        -o /app/build \
         -v -a \
         -ldflags '-extldflags "-static"' && \
   ls
