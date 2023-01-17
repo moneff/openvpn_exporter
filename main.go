@@ -16,9 +16,9 @@ package main
 import (
 	"flag"
 	"fmt"
-	"github.com/pauldeng/openvpn_exporter/exporters"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
+	"local/openvpn_exporter/exporters"
 	"log"
 	"net/http"
 	"os"
@@ -31,13 +31,13 @@ func main() {
 	var (
 		listenAddress      = flag.String("web.listen-address", ":9176", "Address to listen on for web interface and telemetry.")
 		metricsPath        = flag.String("web.telemetry-path", "/metrics", "Path under which to expose metrics.")
-		openvpnStatusPaths = flag.String("openvpn.status_paths", "examples/client.status,examples/server2.status,examples/server3.status", "Paths at which OpenVPN places its status files.")
+		openvpnStatusPaths = flag.String("openvpn.status_paths", "examples/server.openvpn2-5.status", "Paths at which OpenVPN places its status files.")
 		ignoreIndividuals  = flag.Bool("ignore.individuals", false, "If ignoring metrics for individuals")
 		version            = flag.Bool("version", false, "prints version")
 	)
-	flag.Parse()
+	flag.Parse() //Parse cli arguments
 
-	if *version {
+	if *version { //if version detected, print version and exit
 		fmt.Println(appVersion)
 		os.Exit(0)
 	}
@@ -48,8 +48,10 @@ func main() {
 	log.Printf("openvpn.status_path: %v\n", *openvpnStatusPaths)
 	log.Printf("Ignore Individuals: %v\n", *ignoreIndividuals)
 
+	//Collector metrics
 	exporter, err := exporters.NewOpenVPNExporter(strings.Split(*openvpnStatusPaths, ","), *ignoreIndividuals)
-	if err != nil {
+
+	if err != nil { //is error exists?
 		panic(err)
 	}
 	prometheus.MustRegister(exporter)
