@@ -1,4 +1,4 @@
-module github.com/moneff/openvpn_exporter
+module local/openvpn_exporter
 
 go 1.19
 

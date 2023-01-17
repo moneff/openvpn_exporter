@@ -16,9 +16,9 @@ package main
 import (
 	"flag"
 	"fmt"
-	"github.com/moneff/openvpn_exporter/exporters"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
+	"local/openvpn_exporter/exporters"
 	"log"
 	"net/http"
 	"os"

@@ -119,7 +119,7 @@ env GOOS=linux GOARCH=amd64 go build -ldflags="-s -w" -o openvpn_exporter_amd64
 Build the image and then get the binary
 ```
 docker build --force-rm=true -t openvpn_exporter -f local_build.Dockerfile .
-docker run -it -v $(pwd)/openvpn_exporter:/volume openvpn_exporter cp openvpn_exporter /volume
+docker run -it -v $(pwd)/build:/volume openvpn_exporter cp openvpn_exporter /volume
 ```
 
-The binary is available in `$(pwd)/openvpn_exporter/openvpn_exporter`
+The binary is available in `$(pwd)/build/openvpn_exporter`
