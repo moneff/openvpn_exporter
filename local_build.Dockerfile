@@ -19,7 +19,7 @@ RUN go get -d ./...
 
 # Build a standalone binary
 RUN set -ex && \
-  CGO_ENABLED=0 go build \
+  CGO_ENABLED=0 go build -buildvcs=false \
         -tags netgo \
         -o /app/build \
         -v -a \
